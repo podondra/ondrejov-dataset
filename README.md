@@ -1,8 +1,9 @@
 # Ondřejov Spectra Dataset
 
-Ondřejov dataset contains 12936 labeled stellar spectra from Ondřejov CCD700
-archive. The spectra were obsered with
-[Ondřejov Perek 2m Telescope](https://stelweb.asu.cas.cz/~slechta/2m/).
+Ondřejov dataset contains 12936 labeled stellar spectra from
+[Ondřejov CCD700 archive](http://voarchive.asu.cas.cz/ccd700/q/web/form).
+The spectra were observed with
+[Ondřejov Perek 2m Telescope](https://stelweb.asu.cas.cz/web/index.php?pg=2m_telescope).
 
 Code used for generation of this dataset is in
 [podondra/ondrejov-dataset](https://github.com/podondra/ondrejov-dataset)
@@ -15,7 +16,7 @@ The dataset was created to support discovery of emission-line spectra in the
 (LAMOST) survey.
 The main idea was to use Ondřejov dataset to train a machine learning algorithm
 and (in combination with domain adaption) find interesting objects in the large
-archive.
+spectral archive.
 
 ## Contents
 
@@ -61,7 +62,7 @@ according to formulas provided on
 
 ### Gaussian Blur
 
-LAMOST spectrograph spectral resolving power is between 500-1500 which is much
+LAMOST spectrograph spectral resolving power is between 500-1800 which is much
 smaller than spectral resolving power 13000 in H-alpha of Ondřejov spectrograph.
 To overcome this difference spectra from dataset were blurred with Gaussian
 filter with standard deviation of value 7.
@@ -78,3 +79,4 @@ Angstroms.
 ## Contact
 
 Ondřej Podsztavek <podszond@fit.cvut.cz>
+Petr Škoda <skoda@sunstel.asu.cas.cz>
