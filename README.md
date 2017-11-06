@@ -42,9 +42,9 @@ spectrum:
 Spectra are divided into 3 classes according to profile of the H-alpha spectral
 line:
 
-- *absorption*
-- *emission*
-- *double-peak*
+- *absorption*: 6102 spectra (47.2%)
+- *emission*: 5301 spectra (41.0%)
+- *double-peak*: 1533 spectra (11.9%)
 
 ## Preprocessing
 
@@ -68,15 +68,13 @@ filter with standard deviation of value 7.
 
 ### Resampling
 
-Usually machine learning algorithms requires their inputs to be a set of
-features (e.g. design matrix).
-
-TODO
+Machine learning algorithms requires their inputs to be a set of
+features. In order to have same features for all spectra they need to be
+resampled to get measurement in same wavelength across all spectra.
+Then it is easy to create design matrix where each row is a spectrum
+and columns contain fluxes in specified wavelengths between 6519 and 6732
+Angstroms.
 
 ## Contact
 
 Ondřej Podsztavek <podszond@fit.cvut.cz>
-
-## Acknowledgements
-
-TODO
