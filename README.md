@@ -1,46 +1,46 @@
 # Ondřejov Spectra Dataset
 
+Ondřejov dataset contains 12936 labeled stellar spectra from Ondřejov CCD700
+archive. The spectra were obsered with
+[Ondřejov Perek 2m Telescope](https://stelweb.asu.cas.cz/~slechta/2m/).
+
 Code used for generation of this dataset is in
 [podondra/ondrejov-dataset](https://github.com/podondra/ondrejov-dataset)
 GitHub repository.
 
-[Ondřejov Perek 2m Telescope](https://stelweb.asu.cas.cz/~slechta/2m/)
-
-Consisting of 12936 labeled spectra.
-
 ## Context
 
-TODO
-How was the data collected and why?
+The dataset was created to support discovery of emission-line spectra in the
+[Large Sky Area Multi-Object Fibre Spectroscopic Telespcope](http://www.lamost.org)
+(LAMOST) survey.
+The main idea was to use Ondřejov dataset to train a machine learning algorithm
+and (in combination with domain adaption) find interesting objects in the large
+archive.
 
 ## Contents
-
-TODO
-What fields are in your data?
-What are their units of measurement?
-Are there missing values or other recording flaws?
 
 The dataset is released as a CSV file containing the following columns for each
 spectrum:
 
-- *id*
-- *label*
-- *object*: Title of observation
-- *ra*
-- *dec*
-- *expval*: Exposure value in photon counts [Mcounts]
-- *gratang*
-- *detector*: Name of the detector
-- *chipid*: Name of CCD chip
-- *specfilt*: Spectral filter
+- *id*: unique identifier (FITS file name)
+- *label*: assigned class
+- *object*: title of observation
+- *ra*: right ascension
+- *dec*: declination
+- *expval*: exposure value in photon counts [Mcounts]
+- *gratang*: diffraction grating angle
+- *detector*: name of the detector
+- *chipid*: name of CCD chip
+- *specfilt*: spectral filter
 - *date-obs*: UTC date start of observation
-- *dichmir*: Dichroic mirror number
+- *dichmir*: dichroic mirror number
 - *fluxes*: 140 columns of fluxes sampled uniformly between 6519 and 6732
   Angstroms
 
 ### Classes
 
-Ondřejov dataset includes total number of 3 classes:
+Spectra are divided into 3 classes according to profile of the H-alpha spectral
+line:
 
 - *absorption*
 - *emission*
@@ -48,28 +48,35 @@ Ondřejov dataset includes total number of 3 classes:
 
 ## Preprocessing
 
-TODO
-describe preprocessing
+In this section all the preprocessing methods applied to each spectrum are
+described, because it is not possible to provide original FITS files which
+contains raw spectra.
 
-## Goals
+### Air to Vacuum Wavelenght Conversion
+
+Spectra from Ondřejov CCD700 archive are in air wavelenght but LAMOST spectra
+use vacuum wavelenght. Therefore a conversion of Ondřejov spectra was made
+according to formulas provided on
+[Vienna Atomic Line Database Wiki](http://www.astro.uu.se/valdwiki/Air-to-vacuum%20conversion).
+
+### Gaussian Blur
+
+LAMOST spectrograph spectral resolving power is between 500-1500 which is much
+smaller than spectral resolving power 13000 in H-alpha of Ondřejov spectrograph.
+To overcome this difference spectra from dataset were blurred with Gaussian
+filter with standard deviation of value 7.
+
+### Resampling
+
+Usually machine learning algorithms requires their inputs to be a set of
+features (e.g. design matrix).
 
 TODO
-Do you have any objectives in mind in making your data open?
 
 ## Contact
 
-Ondřej Podsztavek <ondrej.podsztavek@gmail.com>
+Ondřej Podsztavek <podszond@fit.cvut.cz>
 
 ## Acknowledgements
 
 TODO
-Who do you owe thanks for sharing this dataset?
-Provide details on the datasets’s provenance.
-This is not only important in collaborative social data science,
-but may also be a part of respecting the dataset owner’s license.
-
-## TODO List
-
-- complete this README.md
-    - cannot provide the original data
-- publish on Zenodo (README.md, ondrejov-dataset.csv, LICENSE)
