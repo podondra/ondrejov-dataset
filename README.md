@@ -42,9 +42,9 @@ spectrum:
 Spectra are divided into 3 classes according to profile of the H-alpha spectral
 line:
 
-- *absorption*: 6102 spectra (47.2%)
-- *emission*: 5301 spectra (41.0%)
-- *double-peak*: 1533 spectra (11.9%)
+- *absorption*: 6102 spectra (47.17%)
+- *emission*: 5301 spectra (40.98%)
+- *double-peak*: 1533 spectra (11.85%)
 
 ## Preprocessing
 
