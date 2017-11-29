@@ -78,5 +78,5 @@ Angstroms.
 
 ## Contact
 
-Ondřej Podsztavek <podszond@fit.cvut.cz>
-Petr Škoda <skoda@sunstel.asu.cas.cz>
+- Ondřej Podsztavek <podszond@fit.cvut.cz>
+- Petr Škoda <skoda@sunstel.asu.cas.cz>
