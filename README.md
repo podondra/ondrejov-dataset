@@ -11,7 +11,7 @@ GitHub repository.
 
 ## Context
 
-The dataset was created to support discovery of emission-line spectra in the
+The dataset was created to support the discovery of emission-line spectra in the
 [Large Sky Area Multi-Object Fibre Spectroscopic Telespcope](http://www.lamost.org)
 (LAMOST) survey.
 The main idea was to use Ondřejov dataset to train a machine learning algorithm
@@ -23,7 +23,7 @@ spectral archive.
 The dataset is released as a CSV file containing the following columns for each
 spectrum:
 
-- *id*: unique identifier (FITS file name)
+- *id*: a unique identifier (FITS file name)
 - *label*: assigned class
 - *object*: title of observation
 - *ra*: right ascension
@@ -33,7 +33,7 @@ spectrum:
 - *detector*: name of the detector
 - *chipid*: name of CCD chip
 - *specfilt*: spectral filter
-- *date-obs*: UTC date start of observation
+- *date-obs*: UTC date start of the observation
 - *dichmir*: dichroic mirror number
 - *fluxes*: 140 columns of fluxes sampled uniformly between 6519 and 6732
   Angstroms
@@ -53,10 +53,10 @@ In this section all the preprocessing methods applied to each spectrum are
 described, because it is not possible to provide original FITS files which
 contains raw spectra.
 
-### Air to Vacuum Wavelenght Conversion
+### Air to Vacuum Wavelength Conversion
 
-Spectra from Ondřejov CCD700 archive are in air wavelenght but LAMOST spectra
-use vacuum wavelenght. Therefore a conversion of Ondřejov spectra was made
+Spectra from Ondřejov CCD700 archive are in air wavelength, but LAMOST spectra
+use vacuum wavelength. Therefore, a conversion of Ondřejov spectra was made
 according to formulas provided on
 [Vienna Atomic Line Database Wiki](http://www.astro.uu.se/valdwiki/Air-to-vacuum%20conversion).
 
@@ -64,15 +64,15 @@ according to formulas provided on
 
 LAMOST spectrograph spectral resolving power is between 500-1800 which is much
 smaller than spectral resolving power 13000 in H-alpha of Ondřejov spectrograph.
-To overcome this difference spectra from dataset were blurred with Gaussian
-filter with standard deviation of value 7.
+To overcome this difference spectra from the dataset were blurred with Gaussian
+filter with a standard deviation of value 7.
 
 ### Resampling
 
-Machine learning algorithms requires their inputs to be a set of
-features. In order to have same features for all spectra they need to be
-resampled to get measurement in same wavelength across all spectra.
-Then it is easy to create design matrix where each row is a spectrum
+Machine learning algorithms require their inputs to be a set of
+features. To have the same features for all spectra, they need to be
+resampled to get measurements in the same wavelength across all spectra.
+Then it is easy to create a design matrix where each row is a spectrum
 and columns contain fluxes in specified wavelengths between 6519 and 6732
 Angstroms.
 
